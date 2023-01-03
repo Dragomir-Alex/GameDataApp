@@ -1,14 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using GameDataApp.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GameDataApp.Controllers
+namespace GameDataApp.ControllersOld
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ItemController : ControllerBase
     {
         [HttpPost]
-        public ActionResult CreateItem()
+        public ActionResult CreateItem([FromBody] Item item)
         {
             var successfullyCreated = true;
 
@@ -17,20 +18,24 @@ namespace GameDataApp.Controllers
                 return BadRequest();
             }
 
-            return Created("[controller]", new object());
+            return Created("[controller]", item);
         }
 
 
         [HttpGet]
-        public ActionResult GetItems()
+        public ActionResult GetItems([FromQuery] int count)
         {
-            string[] items = { "Item1", "Item2", "Item3" };
-            if (items == null)
+            Item[] items = {
+                new() { Id = 1, Name = "First item" },
+                new() { Id = 2, Name = "Second item" },
+                new() { Id = 3, Name = "Third item" }
+            };
+
+            if (!items.Any())
             {
                 return NotFound();
             }
-
-            return Ok(items);
+            return Ok(items.Take(count));
         }
 
         [HttpDelete("{id}")]

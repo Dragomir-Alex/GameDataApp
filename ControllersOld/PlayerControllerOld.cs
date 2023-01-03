@@ -1,14 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using GameDataApp.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GameDataApp.Controllers
+namespace GameDataApp.ControllersOld
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class QuestController : ControllerBase
+    public class PlayerController : ControllerBase
     {
         [HttpPost]
-        public ActionResult CreateQuest()
+        public ActionResult CreatePlayer([FromBody] Player player)
         {
             var successfullyCreated = true;
 
@@ -17,25 +18,29 @@ namespace GameDataApp.Controllers
                 return BadRequest();
             }
 
-            return Created("[controller]", new object());
+            return Created("[controller]", player);
         }
 
 
         [HttpGet]
-        public ActionResult GetQuests()
+        public ActionResult GetPlayers([FromQuery] int count)
         {
-            string[] Quests = { "Quest_1", "Quest_2", "Quest_3" };
+            Player[] players = {
+                new() { Id = 1, Username = "First user", Password = "123" },
+                new() { Id = 2, Username = "Second user", Password = "456" },
+                new() { Id = 3, Username = "Third user", Password = "789" }
+            };
 
-            if (Quests == null)
+            if (!players.Any())
             {
                 return NotFound();
             }
 
-            return Ok(Quests);
+            return Ok(players.Take(count));
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteQuest(int id)
+        public ActionResult DeletePlayer(int id)
         {
             var successfullyDeleted = true;
 
@@ -48,7 +53,7 @@ namespace GameDataApp.Controllers
         }
 
         [HttpPut("entire/{id}")]
-        public ActionResult UpdateEntireQuest(int id)
+        public ActionResult UpdateEntirePlayer(int id)
         {
             var successfullyUpdated = true;
 
@@ -61,7 +66,7 @@ namespace GameDataApp.Controllers
         }
 
         [HttpPatch("partial/{id}")]
-        public ActionResult UpdatePartialQuest(int id)
+        public ActionResult UpdatePartialPlayer(int id)
         {
             var successfullyUpdated = true;
 

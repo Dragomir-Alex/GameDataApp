@@ -1,14 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using GameDataApp.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GameDataApp.Controllers
+namespace GameDataApp.ControllersOld
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InventoryController : ControllerBase
+    public class QuestController : ControllerBase
     {
         [HttpPost]
-        public ActionResult CreateInventory()
+        public ActionResult CreateQuest([FromBody] Quest quest)
         {
             var successfullyCreated = true;
 
@@ -17,27 +18,29 @@ namespace GameDataApp.Controllers
                 return BadRequest();
             }
 
-            return Created("[controller]", new object());
+            return Created("[controller]", quest);
         }
 
 
         [HttpGet]
-        public ActionResult GetInventories()
+        public ActionResult GetQuests([FromQuery] int count)
         {
-            string[] inventories = { "Player_1's inventory: Item1, Item2 etc.",
-                                     "Player_2's inventory: Item1, Item2 etc.",
-                                     "Player_3's inventory: Item1, Item2 etc."};
+            Quest[] quests = {
+                new() { Id = 1, Name = "First quest" },
+                new() { Id = 2, Name = "Second quest" },
+                new() { Id = 3, Name = "Third quest" }
+            };
 
-            if (inventories == null)
+            if (!quests.Any())
             {
                 return NotFound();
             }
 
-            return Ok(inventories);
+            return Ok(quests.Take(count));
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteInventory(int id)
+        public ActionResult DeleteQuest(int id)
         {
             var successfullyDeleted = true;
 
@@ -50,7 +53,7 @@ namespace GameDataApp.Controllers
         }
 
         [HttpPut("entire/{id}")]
-        public ActionResult UpdateEntireInventory(int id)
+        public ActionResult UpdateEntireQuest(int id)
         {
             var successfullyUpdated = true;
 
@@ -63,7 +66,7 @@ namespace GameDataApp.Controllers
         }
 
         [HttpPatch("partial/{id}")]
-        public ActionResult UpdatePartialInventory(int id)
+        public ActionResult UpdatePartialQuest(int id)
         {
             var successfullyUpdated = true;
 
@@ -74,6 +77,5 @@ namespace GameDataApp.Controllers
 
             return NoContent();
         }
-
     }
 }

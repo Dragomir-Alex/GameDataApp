@@ -1,14 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using GameDataApp.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GameDataApp.Controllers
+namespace GameDataApp.ControllersOld
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlayerController : ControllerBase
+    public class InventoryController : ControllerBase
     {
         [HttpPost]
-        public ActionResult CreatePlayer()
+        public ActionResult CreateInventory([FromBody] Inventory inventory)
         {
             var successfullyCreated = true;
 
@@ -17,25 +18,29 @@ namespace GameDataApp.Controllers
                 return BadRequest();
             }
 
-            return Created("[controller]", new object());
+            return Created("[controller]", inventory);
         }
 
 
         [HttpGet]
-        public ActionResult GetPlayers()
+        public ActionResult GetInventories([FromQuery] int count)
         {
-            string[] players = { "Player_1", "Player_2", "Player_3" };
+            Inventory[] inventories = {
+                new() { Id = 1, PlayerId = 1 },
+                new() { Id = 2, PlayerId = 2 },
+                new() { Id = 3, PlayerId = 3 }
+            };
 
-            if (players == null)
+            if (!inventories.Any())
             {
                 return NotFound();
             }
 
-            return Ok(players);
+            return Ok(inventories.Take(count));
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeletePlayer(int id)
+        public ActionResult DeleteInventory(int id)
         {
             var successfullyDeleted = true;
 
@@ -48,7 +53,7 @@ namespace GameDataApp.Controllers
         }
 
         [HttpPut("entire/{id}")]
-        public ActionResult UpdateEntirePlayer(int id)
+        public ActionResult UpdateEntireInventory(int id)
         {
             var successfullyUpdated = true;
 
@@ -61,7 +66,7 @@ namespace GameDataApp.Controllers
         }
 
         [HttpPatch("partial/{id}")]
-        public ActionResult UpdatePartialPlayer(int id)
+        public ActionResult UpdatePartialInventory(int id)
         {
             var successfullyUpdated = true;
 
@@ -72,5 +77,6 @@ namespace GameDataApp.Controllers
 
             return NoContent();
         }
+
     }
 }

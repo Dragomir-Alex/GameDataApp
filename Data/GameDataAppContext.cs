@@ -15,5 +15,11 @@ namespace GameDataApp.Data
         }
 
         public DbSet<GameDataApp.Models.Player> Player { get; set; } = default!;
+
+        public DbSet<GameDataApp.Models.Inventory> Inventory { get; set; } = default!;
+
+        public DbSet<GameDataApp.Models.Quest> Quest { get; set; } = default!;
+
+        public DbSet<GameDataApp.Models.Item> Item { get; set; } = default!;
     }
 }

@@ -12,55 +12,55 @@ namespace GameDataApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlayersController : ControllerBase
+    public class InventoriesController : ControllerBase
     {
         private readonly GameDataAppContext _context;
 
-        public PlayersController(GameDataAppContext context)
+        public InventoriesController(GameDataAppContext context)
         {
             _context = context;
         }
 
-        // GET: api/Players
+        // GET: api/Inventories
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Player>>> GetPlayer()
+        public async Task<ActionResult<IEnumerable<Inventory>>> GetInventory()
         {
-          if (_context.Player == null)
+          if (_context.Inventory == null)
           {
               return NotFound();
           }
-            return await _context.Player.ToListAsync();
+            return await _context.Inventory.ToListAsync();
         }
 
-        // GET: api/Players/5
+        // GET: api/Inventories/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Player>> GetPlayer(int id)
+        public async Task<ActionResult<Inventory>> GetInventory(int id)
         {
-          if (_context.Player == null)
+          if (_context.Inventory == null)
           {
               return NotFound();
           }
-            var player = await _context.Player.FindAsync(id);
+            var inventory = await _context.Inventory.FindAsync(id);
 
-            if (player == null)
+            if (inventory == null)
             {
                 return NotFound();
             }
 
-            return player;
+            return inventory;
         }
 
-        // PUT: api/Players/5
+        // PUT: api/Inventories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPlayer(int id, Player player)
+        public async Task<IActionResult> PutInventory(int id, Inventory inventory)
         {
-            if (id != player.Id)
+            if (id != inventory.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(player).State = EntityState.Modified;
+            _context.Entry(inventory).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace GameDataApp.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PlayerExists(id))
+                if (!InventoryExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace GameDataApp.Controllers
             return NoContent();
         }
 
-        // POST: api/Players
+        // POST: api/Inventories
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Player>> PostPlayer(Player player)
+        public async Task<ActionResult<Inventory>> PostInventory(Inventory inventory)
         {
-          if (_context.Player == null)
+          if (_context.Inventory == null)
           {
-              return Problem("Entity set 'GameDataAppContext.Player'  is null.");
+              return Problem("Entity set 'GameDataAppContext.Inventory'  is null.");
           }
-            _context.Player.Add(player);
+            _context.Inventory.Add(inventory);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPlayer", new { id = player.Id }, player);
+            return CreatedAtAction("GetInventory", new { id = inventory.Id }, inventory);
         }
 
-        // DELETE: api/Players/5
+        // DELETE: api/Inventories/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePlayer(int id)
+        public async Task<IActionResult> DeleteInventory(int id)
         {
-            if (_context.Player == null)
+            if (_context.Inventory == null)
             {
                 return NotFound();
             }
-            var player = await _context.Player.FindAsync(id);
-            if (player == null)
+            var inventory = await _context.Inventory.FindAsync(id);
+            if (inventory == null)
             {
                 return NotFound();
             }
 
-            _context.Player.Remove(player);
+            _context.Inventory.Remove(inventory);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool PlayerExists(int id)
+        private bool InventoryExists(int id)
         {
-            return (_context.Player?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Inventory?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

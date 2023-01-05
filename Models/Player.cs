@@ -10,7 +10,7 @@ namespace GameDataApp.Models
         public string Password { get; set; }
 
         // Foreign Key
-        public int InventoryId { get; set; }
+        //public int InventoryId { get; set; }
         // Navigation property
         public Inventory Inventory { get; set; }
     }

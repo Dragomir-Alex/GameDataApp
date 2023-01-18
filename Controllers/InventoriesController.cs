@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GameDataApp.Data;
 using GameDataApp.Models;
+using GameDataApp.DAL;
 
 namespace GameDataApp.Controllers
 {
@@ -14,44 +10,38 @@ namespace GameDataApp.Controllers
     [ApiController]
     public class InventoriesController : ControllerBase
     {
-        private readonly GameDataAppContext _context;
+        private readonly GenericRepository<Inventory> _inventoryRepository;
 
         public InventoriesController(GameDataAppContext context)
         {
-            _context = context;
+            _inventoryRepository = new GenericRepository<Inventory>(context);
         }
 
-        // GET: api/Inventories
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Inventory>>> GetInventory()
         {
-          if (_context.Inventory == null)
-          {
-              return NotFound();
-          }
-            return await _context.Inventory.ToListAsync();
+            var inventories = await _inventoryRepository.Get();
+
+            if (inventories == null)
+            {
+                return NotFound();
+            }
+            return Ok(inventories);
         }
 
-        // GET: api/Inventories/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Inventory>> GetInventory(int id)
         {
-          if (_context.Inventory == null)
-          {
-              return NotFound();
-          }
-            var inventory = await _context.Inventory.FindAsync(id);
+            var inventory = await _inventoryRepository.GetById(id);
 
             if (inventory == null)
             {
                 return NotFound();
             }
 
-            return inventory;
+            return Ok(inventory);
         }
 
-        // PUT: api/Inventories/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutInventory(int id, Inventory inventory)
         {
@@ -60,15 +50,15 @@ namespace GameDataApp.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(inventory).State = EntityState.Modified;
+            await _inventoryRepository.Update(inventory);
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _inventoryRepository.Save();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InventoryExists(id))
+                if (!await InventoryExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +71,28 @@ namespace GameDataApp.Controllers
             return NoContent();
         }
 
-        // POST: api/Inventories
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
         [HttpPost]
         public async Task<ActionResult<Inventory>> PostInventory(Inventory inventory)
         {
-          if (_context.Inventory == null)
-          {
-              return Problem("Entity set 'GameDataAppContext.Inventory'  is null.");
-          }
-            _context.Inventory.Add(inventory);
-            await _context.SaveChangesAsync();
+            await _inventoryRepository.Insert(inventory);
+            await _inventoryRepository.Save();
 
             return CreatedAtAction("GetInventory", new { id = inventory.Id }, inventory);
         }
 
-        // DELETE: api/Inventories/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteInventory(int id)
         {
-            if (_context.Inventory == null)
-            {
-                return NotFound();
-            }
-            var inventory = await _context.Inventory.FindAsync(id);
-            if (inventory == null)
-            {
-                return NotFound();
-            }
-
-            _context.Inventory.Remove(inventory);
-            await _context.SaveChangesAsync();
+            await _inventoryRepository.Delete(id);
+            await _inventoryRepository.Save();
 
             return NoContent();
         }
 
-        private bool InventoryExists(int id)
+        private async Task<bool> InventoryExists(int id)
         {
-            return (_context.Inventory?.Any(e => e.Id == id)).GetValueOrDefault();
+            return await _inventoryRepository.Exists(id);
         }
     }
 }

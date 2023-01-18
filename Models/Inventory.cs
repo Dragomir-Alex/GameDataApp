@@ -5,9 +5,9 @@ namespace GameDataApp.Models
     public class Inventory
     {
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Dimensiunea este obligatorie.")]
         public int Size { get; set; }
-        public IEnumerable<Item> Items { get; set; }
+        public IEnumerable<Item>? Items { get; set; }
 
         // Foreign Key
         public int PlayerId { get; set; }

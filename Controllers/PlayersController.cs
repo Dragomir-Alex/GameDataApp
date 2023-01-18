@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GameDataApp.Data;
 using GameDataApp.Models;
+using GameDataApp.DAL;
 
 namespace GameDataApp.Controllers
 {
@@ -14,44 +15,38 @@ namespace GameDataApp.Controllers
     [ApiController]
     public class PlayersController : ControllerBase
     {
-        private readonly GameDataAppContext _context;
+        private readonly GenericRepository<Player> _playerRepository;
 
         public PlayersController(GameDataAppContext context)
         {
-            _context = context;
+            _playerRepository = new GenericRepository<Player>(context);
         }
 
-        // GET: api/Players
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Player>>> GetPlayer()
         {
-          if (_context.Player == null)
-          {
-              return NotFound();
-          }
-            return await _context.Player.ToListAsync();
+            var players = await _playerRepository.Get();
+
+            if (players == null)
+            {
+                return NotFound();
+            }
+            return Ok(players);
         }
 
-        // GET: api/Players/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Player>> GetPlayer(int id)
         {
-          if (_context.Player == null)
-          {
-              return NotFound();
-          }
-            var player = await _context.Player.FindAsync(id);
+            var player = await _playerRepository.GetById(id);
 
             if (player == null)
             {
                 return NotFound();
             }
 
-            return player;
+            return Ok(player);
         }
 
-        // PUT: api/Players/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPlayer(int id, Player player)
         {
@@ -60,15 +55,15 @@ namespace GameDataApp.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(player).State = EntityState.Modified;
+            _playerRepository.Update(player);
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _playerRepository.Save();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PlayerExists(id))
+                if (!await PlayerExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +76,27 @@ namespace GameDataApp.Controllers
             return NoContent();
         }
 
-        // POST: api/Players
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Player>> PostPlayer(Player player)
         {
-          if (_context.Player == null)
-          {
-              return Problem("Entity set 'GameDataAppContext.Player'  is null.");
-          }
-            _context.Player.Add(player);
-            await _context.SaveChangesAsync();
+            await _playerRepository.Insert(player);
+            await _playerRepository.Save();
 
             return CreatedAtAction("GetPlayer", new { id = player.Id }, player);
         }
 
-        // DELETE: api/Players/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePlayer(int id)
         {
-            if (_context.Player == null)
-            {
-                return NotFound();
-            }
-            var player = await _context.Player.FindAsync(id);
-            if (player == null)
-            {
-                return NotFound();
-            }
-
-            _context.Player.Remove(player);
-            await _context.SaveChangesAsync();
+            await _playerRepository.Delete(id);
+            await _playerRepository.Save();
 
             return NoContent();
         }
 
-        private bool PlayerExists(int id)
+        private async Task<bool> PlayerExists(int id)
         {
-            return (_context.Player?.Any(e => e.Id == id)).GetValueOrDefault();
+            return await _playerRepository.Exists(id);
         }
     }
 }

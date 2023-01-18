@@ -1,24 +1,69 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using GameDataApp.Data;
+using Microsoft.OpenApi.Models;
+using GameDataApp.DAL;
+using GameDataApp.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<GameDataAppContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("GameDataAppContext") ?? throw new InvalidOperationException("Connection string 'GameDataAppContext' not found.")));
+                options.UseSqlServer(
+                    builder.Configuration.GetConnectionString("GameDataAppContext")
+                    ?? throw new InvalidOperationException("Connection string 'GameDataAppContext' not found.")));
 
-// Add services to the container.
+builder.Services.AddScoped<GenericRepository<Inventory>>();
+builder.Services.AddScoped<GenericRepository<Item>>();
+builder.Services.AddScoped<GenericRepository<Player>>();
+builder.Services.AddScoped<GenericRepository<Quest>>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "GameDataApp",
+        Description = "Description",
+        Version = "v1",
+        Contact = new OpenApiContact
+        {
+            Name = "Test",
+            Email = "Test",
+            Url = new Uri(uriString: "https://TEST.com")
+        }
+    });
+
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+    c.IncludeXmlComments(xmlPath);
+
+    c.CustomOperationIds(apiDescription =>
+    {
+        return apiDescription.TryGetMethodInfo(out MethodInfo methodInfo)
+            ? methodInfo.Name
+            : null;
+    });
+}).AddSwaggerGenNewtonsoftSupport();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "GameDataApp v1");
+        c.DisplayOperationId();
+    });
+}
+else
+{
+    app.UseExceptionHandler("/error");
 }
 
 app.UseHttpsRedirection();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using GameDataApp.Models;
+using GameDataApp.Configuration;
 
 namespace GameDataApp.Data
 {
@@ -21,5 +22,13 @@ namespace GameDataApp.Data
         public DbSet<GameDataApp.Models.Quest> Quest { get; set; } = default!;
 
         public DbSet<GameDataApp.Models.Item> Item { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new PlayerConfiguration());
+            modelBuilder.ApplyConfiguration(new InventoryConfiguration());
+            modelBuilder.ApplyConfiguration(new QuestConfiguration());
+            modelBuilder.ApplyConfiguration(new ItemConfiguration());
+        }
     }
 }

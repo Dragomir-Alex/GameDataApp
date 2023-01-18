@@ -1,0 +1,28 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>GameDataApp</name>
+  </assembly>
+  <members>
+    <member name="M:GameDataApp.Controllers.ItemsController.GetItems(System.Int32)">
+      <summary>
+        Return a list of all the items
+      </summary>
+      <param name="count"></param>
+      <returns></returns>
+      <exception cref="T:System.ArgumentException"></exception>
+    </member>
+    <member name="T:GameDataApp.Migrations.InitialCreationMigration">
+      <inheritdoc />
+    </member>
+    <member name="M:GameDataApp.Migrations.InitialCreationMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+      <inheritdoc />
+    </member>
+    <member name="M:GameDataApp.Migrations.InitialCreationMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+      <inheritdoc />
+    </member>
+    <member name="M:GameDataApp.Migrations.InitialCreationMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+      <inheritdoc />
+    </member>
+  </members>
+</doc>

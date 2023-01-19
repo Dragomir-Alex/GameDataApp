@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDataApp", "GameDataApp.csproj", "{B7C8D777-B946-44AE-AA36-62A4C93917B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDataApp", "GameDataApp.csproj", "{B7C8D777-B946-44AE-AA36-62A4C93917B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDataAppClient", "GameDataAppClient\GameDataAppClient.csproj", "{6BC6C090-485B-4A53-999E-7CCC074F7E9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B7C8D777-B946-44AE-AA36-62A4C93917B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7C8D777-B946-44AE-AA36-62A4C93917B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7C8D777-B946-44AE-AA36-62A4C93917B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BC6C090-485B-4A53-999E-7CCC074F7E9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BC6C090-485B-4A53-999E-7CCC074F7E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BC6C090-485B-4A53-999E-7CCC074F7E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BC6C090-485B-4A53-999E-7CCC074F7E9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

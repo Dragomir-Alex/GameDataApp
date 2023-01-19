@@ -168,5 +168,234 @@
         <member name="M:GameDataApp.Migrations.AddQuestRecords.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="M:GameDataAPIClient.swaggerClient.ErrorAsync">
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.ErrorAsync(System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetInventoryAllAsync">
+            <summary>Returns all the Inventory table entries.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetInventoryAllAsync(System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Returns all the Inventory table entries.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PostInventoryAsync(GameDataAPIClient.Inventory)">
+            <summary>Creates a new Inventory table entry.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PostInventoryAsync(GameDataAPIClient.Inventory,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Creates a new Inventory table entry.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetInventoryAsync(System.Int32)">
+            <summary>Returns the Inventory table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetInventoryAsync(System.Int32,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Returns the Inventory table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PutInventoryAsync(System.Int32,GameDataAPIClient.Inventory)">
+            <summary>Updates the Inventory table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PutInventoryAsync(System.Int32,GameDataAPIClient.Inventory,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Updates the Inventory table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.DeleteInventoryAsync(System.Int32)">
+            <summary>Deletes the Inventory table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.DeleteInventoryAsync(System.Int32,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Deletes the Inventory table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetItemAllAsync">
+            <summary>Returns all the Item table entries.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetItemAllAsync(System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Returns all the Item table entries.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PostItemAsync(GameDataAPIClient.Item)">
+            <summary>Creates a new Item table entry.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PostItemAsync(GameDataAPIClient.Item,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Creates a new Item table entry.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetItemAsync(System.Int32)">
+            <summary>Returns the Item table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetItemAsync(System.Int32,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Returns the Item table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PutItemAsync(System.Int32,GameDataAPIClient.Item)">
+            <summary>Updates the Item table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PutItemAsync(System.Int32,GameDataAPIClient.Item,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Updates the Item table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.DeleteItemAsync(System.Int32)">
+            <summary>Deletes the Item table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.DeleteItemAsync(System.Int32,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Deletes the Item table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetPlayerAllAsync">
+            <summary>Returns all the Player table entries.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetPlayerAllAsync(System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Returns all the Player table entries.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PostPlayerAsync(GameDataAPIClient.Player)">
+            <summary>Creates a new Player table entry.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PostPlayerAsync(GameDataAPIClient.Player,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Creates a new Player table entry.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetPlayerAsync(System.Int32)">
+            <summary>Returns the Player table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetPlayerAsync(System.Int32,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Returns the Player table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PutPlayerAsync(System.Int32,GameDataAPIClient.Player)">
+            <summary>Updates the Player table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PutPlayerAsync(System.Int32,GameDataAPIClient.Player,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Updates the Player table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.DeletePlayerAsync(System.Int32)">
+            <summary>Deletes the Player table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.DeletePlayerAsync(System.Int32,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Deletes the Player table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetQuestAllAsync">
+            <summary>Returns all the Quest table entries.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetQuestAllAsync(System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Returns all the Quest table entries.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PostQuestAsync(GameDataAPIClient.Quest)">
+            <summary>Creates a new Quest table entry.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PostQuestAsync(GameDataAPIClient.Quest,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Creates a new Quest table entry.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetQuestAsync(System.Int32)">
+            <summary>Returns the Quest table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.GetQuestAsync(System.Int32,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Returns the Quest table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PutQuestAsync(System.Int32,GameDataAPIClient.Quest)">
+            <summary>Updates the Quest table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.PutQuestAsync(System.Int32,GameDataAPIClient.Quest,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Updates the Quest table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.DeleteQuestAsync(System.Int32)">
+            <summary>Deletes the Quest table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:GameDataAPIClient.swaggerClient.DeleteQuestAsync(System.Int32,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Deletes the Quest table entry with the given ID.</summary>
+            <returns>Success</returns>
+            <exception cref="T:GameDataAPIClient.ApiException">A server side error occurred.</exception>
+        </member>
     </members>
 </doc>

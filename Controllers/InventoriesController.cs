@@ -23,7 +23,7 @@ namespace GameDataApp.Controllers
         /// <returns></returns>
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Inventory>>> GetInventory()
+        public async Task<ActionResult<IEnumerable<Inventory>>> GetInventories()
         {
             var inventories = await _inventoryRepository.Get();
 

@@ -17,6 +17,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="GameDataApp.Tests\**" />
+    <Compile Remove="GameDataAppClient\**" />
+    <Content Remove="GameDataApp.Tests\**" />
+    <Content Remove="GameDataAppClient\**" />
+    <EmbeddedResource Remove="GameDataApp.Tests\**" />
+    <EmbeddedResource Remove="GameDataAppClient\**" />
+    <None Remove="GameDataApp.Tests\**" />
+    <None Remove="GameDataAppClient\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="7.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />

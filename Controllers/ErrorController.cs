@@ -8,6 +8,11 @@ namespace GameDataApp.Controllers
     [ApiController]
     public class ErrorController : ControllerBase
     {
+        /// <summary>
+        /// Error handler.
+        /// </summary>
+        /// <returns></returns>
+ 
         [HttpGet("/error")]
         public IActionResult Error()
         {
@@ -16,7 +21,6 @@ namespace GameDataApp.Controllers
             var errorMessage = context.Error.Message;
 
             // log error
-            // TODO: Add a logging framework; whatever is needed
 
             return Problem();
         }

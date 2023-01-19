@@ -28,7 +28,7 @@ namespace GameDataApp.Controllers
         /// <returns></returns>
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Quest>>> GetQuest()
+        public async Task<ActionResult<IEnumerable<Quest>>> GetQuests()
         {
             var quests = await _questRepository.Get();
 

@@ -10,11 +10,11 @@ namespace GameDataApp.Controllers
     [ApiController]
     public class ItemsController : ControllerBase
     {
-        private readonly GenericRepository<Item> _itemRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ItemsController(GameDataAppContext context)
+        public ItemsController(IUnitOfWork unitOfWork)
         {
-            _itemRepository = new GenericRepository<Item>(context);
+            _unitOfWork = unitOfWork;
         }
 
         /// <summary>
@@ -23,9 +23,9 @@ namespace GameDataApp.Controllers
         /// <returns></returns>
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Item>>> GetItem()
+        public async Task<ActionResult<IEnumerable<Item>>> GetItems()
         {
-            var items = await _itemRepository.Get();
+            var items = await _unitOfWork.ItemRepository.Get();
 
             if (items == null)
             {
@@ -43,7 +43,7 @@ namespace GameDataApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetItem(int id)
         {
-            var item = await _itemRepository.GetById(id);
+            var item = await _unitOfWork.ItemRepository.GetById(id);
 
             if (item == null)
             {
@@ -68,11 +68,11 @@ namespace GameDataApp.Controllers
                 return BadRequest();
             }
 
-            await _itemRepository.Update(item);
+            await _unitOfWork.ItemRepository.Update(item);
 
             try
             {
-                await _itemRepository.Save();
+                await _unitOfWork.ItemRepository.Save();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -98,8 +98,8 @@ namespace GameDataApp.Controllers
         [HttpPost]
         public async Task<ActionResult<Item>> PostItem(Item item)
         {
-            await _itemRepository.Insert(item);
-            await _itemRepository.Save();
+            await _unitOfWork.ItemRepository.Insert(item);
+            await _unitOfWork.ItemRepository.Save();
 
             return CreatedAtAction("GetItem", new { id = item.Id }, item);
         }
@@ -113,15 +113,15 @@ namespace GameDataApp.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteItem(int id)
         {
-            await _itemRepository.Delete(id);
-            await _itemRepository.Save();
+            await _unitOfWork.ItemRepository.Delete(id);
+            await _unitOfWork.ItemRepository.Save();
 
             return NoContent();
         }
 
         private async Task<bool> ItemExists(int id)
         {
-            return await _itemRepository.Exists(id);
+            return await _unitOfWork.ItemRepository.Exists(id);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace GameDataApp.Controllers
         /// <returns></returns>
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Player>>> GetPlayer()
+        public async Task<ActionResult<IEnumerable<Player>>> GetPlayers()
         {
             var players = await _playerRepository.Get();
 

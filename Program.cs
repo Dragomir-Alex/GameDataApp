@@ -25,14 +25,14 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "GameDataApp",
-        Description = "Description",
+        Title = "Game Data Application",
+        Description = "This is an application for managing and performing CRUD operations on a game database.",
         Version = "v1",
         Contact = new OpenApiContact
         {
-            Name = "Test",
-            Email = "Test",
-            Url = new Uri(uriString: "https://TEST.com")
+            Name = "Dragomir Alexandru-Mario",
+            Email = "dragomario2k@gmail.com",
+            Url = new Uri(uriString: "https://www.dummy.com")
         }
     });
 

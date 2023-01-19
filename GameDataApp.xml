@@ -1,28 +1,172 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <doc>
-  <assembly>
-    <name>GameDataApp</name>
-  </assembly>
-  <members>
-    <member name="M:GameDataApp.Controllers.ItemsController.GetItems(System.Int32)">
-      <summary>
-        Return a list of all the items
-      </summary>
-      <param name="count"></param>
-      <returns></returns>
-      <exception cref="T:System.ArgumentException"></exception>
-    </member>
-    <member name="T:GameDataApp.Migrations.InitialCreationMigration">
-      <inheritdoc />
-    </member>
-    <member name="M:GameDataApp.Migrations.InitialCreationMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-      <inheritdoc />
-    </member>
-    <member name="M:GameDataApp.Migrations.InitialCreationMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-      <inheritdoc />
-    </member>
-    <member name="M:GameDataApp.Migrations.InitialCreationMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-      <inheritdoc />
-    </member>
-  </members>
+    <assembly>
+        <name>GameDataApp</name>
+    </assembly>
+    <members>
+        <member name="M:GameDataApp.Controllers.InventoriesController.GetInventory">
+            <summary>
+            Returns all the Inventory table entries.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.InventoriesController.GetInventory(System.Int32)">
+            <summary>
+            Returns the Inventory table entry with the given ID.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.InventoriesController.PutInventory(System.Int32,GameDataApp.Models.Inventory)">
+            <summary>
+            Updates the Inventory table entry with the given ID.
+            </summary>
+            <param name="id"></param>
+            <param name="inventory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.InventoriesController.PostInventory(GameDataApp.Models.Inventory)">
+            <summary>
+            Creates a new Inventory table entry.
+            </summary>
+            <param name="inventory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.InventoriesController.DeleteInventory(System.Int32)">
+            <summary>
+            Deletes the Inventory table entry with the given ID.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.ItemsController.GetItem">
+            <summary>
+            Returns all the Item table entries.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.ItemsController.GetItem(System.Int32)">
+            <summary>
+            Returns the Item table entry with the given ID.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.ItemsController.PutItem(System.Int32,GameDataApp.Models.Item)">
+            <summary>
+            Updates the Item table entry with the given ID.
+            </summary>
+            <param name="id"></param>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.ItemsController.PostItem(GameDataApp.Models.Item)">
+            <summary>
+            Creates a new Item table entry.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.ItemsController.DeleteItem(System.Int32)">
+            <summary>
+            Deletes the Item table entry with the given ID.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.PlayersController.GetPlayer">
+            <summary>
+            Returns all the Player table entries.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.PlayersController.GetPlayer(System.Int32)">
+            <summary>
+            Returns the Player table entry with the given ID.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.PlayersController.PutPlayer(System.Int32,GameDataApp.Models.Player)">
+            <summary>
+            Updates the Player table entry with the given ID.
+            </summary>
+            <param name="id"></param>
+            <param name="player"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.PlayersController.PostPlayer(GameDataApp.Models.Player)">
+            <summary>
+            Creates a new Player table entry.
+            </summary>
+            <param name="player"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.PlayersController.DeletePlayer(System.Int32)">
+            <summary>
+            Deletes the Player table entry with the given ID.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.QuestsController.GetQuest">
+            <summary>
+            Returns all the Quest table entries.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.QuestsController.GetQuest(System.Int32)">
+            <summary>
+            Returns the Quest table entry with the given ID.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.QuestsController.PutQuest(System.Int32,GameDataApp.Models.Quest)">
+            <summary>
+            Updates the Quest table entry with the given ID.
+            </summary>
+            <param name="id"></param>
+            <param name="quest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.QuestsController.PostQuest(GameDataApp.Models.Quest)">
+            <summary>
+            Creates a new Quest table entry.
+            </summary>
+            <param name="quest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GameDataApp.Controllers.QuestsController.DeleteQuest(System.Int32)">
+            <summary>
+            Deletes the Quest table entry with the given ID.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GameDataApp.Migrations.FirstMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:GameDataApp.Migrations.FirstMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:GameDataApp.Migrations.FirstMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:GameDataApp.Migrations.FirstMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:GameDataApp.Migrations.AddQuestRecords">
+            <inheritdoc />
+        </member>
+        <member name="M:GameDataApp.Migrations.AddQuestRecords.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:GameDataApp.Migrations.AddQuestRecords.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:GameDataApp.Migrations.AddQuestRecords.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
 </doc>

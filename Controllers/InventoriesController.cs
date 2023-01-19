@@ -17,6 +17,11 @@ namespace GameDataApp.Controllers
             _inventoryRepository = new GenericRepository<Inventory>(context);
         }
 
+        /// <summary>
+        /// Returns all the Inventory table entries.
+        /// </summary>
+        /// <returns></returns>
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Inventory>>> GetInventory()
         {
@@ -28,6 +33,12 @@ namespace GameDataApp.Controllers
             }
             return Ok(inventories);
         }
+
+        /// <summary>
+        /// Returns the Inventory table entry with the given ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Inventory>> GetInventory(int id)
@@ -41,6 +52,13 @@ namespace GameDataApp.Controllers
 
             return Ok(inventory);
         }
+
+        /// <summary>
+        /// Updates the Inventory table entry with the given ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="inventory"></param>
+        /// <returns></returns>
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutInventory(int id, Inventory inventory)
@@ -71,6 +89,11 @@ namespace GameDataApp.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Creates a new Inventory table entry.
+        /// </summary>
+        /// <param name="inventory"></param>
+        /// <returns></returns>
 
         [HttpPost]
         public async Task<ActionResult<Inventory>> PostInventory(Inventory inventory)
@@ -80,6 +103,12 @@ namespace GameDataApp.Controllers
 
             return CreatedAtAction("GetInventory", new { id = inventory.Id }, inventory);
         }
+
+        /// <summary>
+        /// Deletes the Inventory table entry with the given ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteInventory(int id)

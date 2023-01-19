@@ -17,6 +17,11 @@ namespace GameDataApp.Controllers
             _itemRepository = new GenericRepository<Item>(context);
         }
 
+        /// <summary>
+        /// Returns all the Item table entries.
+        /// </summary>
+        /// <returns></returns>
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Item>>> GetItem()
         {
@@ -28,6 +33,12 @@ namespace GameDataApp.Controllers
             }
             return Ok(items);
         }
+
+        /// <summary>
+        /// Returns the Item table entry with the given ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetItem(int id)
@@ -41,6 +52,13 @@ namespace GameDataApp.Controllers
 
             return Ok(item);
         }
+
+        /// <summary>
+        /// Updates the Item table entry with the given ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="item"></param>
+        /// <returns></returns>
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutItem(int id, Item item)
@@ -71,6 +89,11 @@ namespace GameDataApp.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Creates a new Item table entry.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
 
         [HttpPost]
         public async Task<ActionResult<Item>> PostItem(Item item)
@@ -80,6 +103,12 @@ namespace GameDataApp.Controllers
 
             return CreatedAtAction("GetItem", new { id = item.Id }, item);
         }
+
+        /// <summary>
+        /// Deletes the Item table entry with the given ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteItem(int id)
